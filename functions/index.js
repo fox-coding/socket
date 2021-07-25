@@ -13,8 +13,8 @@ io.on('connection', client => {
 // // https://firebase.google.com/docs/functions/write-firebase-functions
 //
 
-app.get("/", function (req, res) {
-  res.send("Hello Sven!");
+app.get("/*", function (req, res) {
+  res.send("Hello Stranger!");
 });
 app.get("/user", function (req, res) {
   var name = req.query.name
