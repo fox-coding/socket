@@ -1,39 +1,31 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Socket - Playground</title>
-</head>
-<body>
-    <h2>Socket-Playground</h2>
-    <p>Hallo, {{name}}</p>
-    <form>
-        <input type="text" name="chat-input" id="chat_input">
-        <button>senden</button>
+  </head>
+  <body>
+    <h2>Chatverlauf</h2>
+    <div id="chat_history">
+    </div>
+    <form id="chat_form">
+      <input type="text" name="chat-input" id="chat_input" />
+      <button>senden</button>
     </form>
     <script src="/js/firebase.min.js"></script>
     <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyAE5miNmyfRHpWpTxaCwXE2QBonvbb9P8k",
-            authDomain: "socket-playground.firebaseapp.com",
-            projectId: "socket-playground",
-            storageBucket: "socket-playground.appspot.com",
-            messagingSenderId: "700123376335",
-            appId: "1:700123376335:web:09c79341f316a3c80b25ba"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-        const db = firebase.firestore();
-        const functions = firebase.functions();
 
-        // Update firestore Settings:
-        db.settings({timestampsInSnapshots: true});
-        
-        </script>
+      var firebaseConfig = { apiKey: "AIzaSyAE5miNmyfRHpWpTxaCwXE2QBonvbb9P8k",
+      authDomain: "socket-playground.firebaseapp.com", projectId:
+      "socket-playground", storageBucket: "socket-playground.appspot.com",
+      messagingSenderId: "700123376335", appId:
+      "1:700123376335:web:09c79341f316a3c80b25ba" };
+      firebase.initializeApp(firebaseConfig); const auth = firebase.auth();
+      const db = firebase.firestore(); const functions = firebase.functions();
+      db.settings({timestampsInSnapshots: true});
+
+    </script>
     <script src="/js/ui.js"></script>
-</body>
+  </body>
 </html>
