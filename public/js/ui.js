@@ -1,6 +1,8 @@
 const submitForm = document.getElementById("chat_form");
 const submitInput = document.getElementById("chat_input");
 const chatWrapper = document.getElementById("chat_history");
+const logIn = document.getElementById("login_form");
+const signupForm = document.getElementById("register_form");
 
 console.log("UI geladen");
 
@@ -31,4 +33,54 @@ submitForm.addEventListener("submit", (e) => {
     });
 });
 
-// EQUrVsKLa0A39q7aRkP0
+// Listen for auth status
+auth.onAuthStateChanged(user => {
+  if(user.emailVerified){
+    console.log('User eingeloggt')
+  }else{
+    console.log('kein User')
+    chatWrapper.remove()
+  }
+})
+
+// SIGN UP FORM
+if (signupForm) {
+  signupForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const email = signupForm['sgn_email'].value;
+      const password = signupForm['sgn_pass'].value;
+
+      auth.createUserWithEmailAndPassword(email, password).then(cred => {
+          return db.collection('users').doc(cred.user.uid).set({
+              chat:[]
+          }).then(()=>{
+              var user = cred.user;
+              user.sendEmailVerification().then(function(){
+                  console.log("email verification sent to user");
+              }).catch(err => {
+                  console.log(err.message);
+              }); 
+          })
+      }).catch(err => {
+          console.log(err.message);
+      })
+  })
+}
+
+// LOG IN FORM
+if (logIn) {
+  logIn.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const email = logIn['log_email'].value;
+      const password = logIn['log_pass'].value;
+      auth.signInWithEmailAndPassword(email, password).then(cred => {
+        console.log('succefully logged in')
+      }).catch(err => {
+        console.log(err.message);
+      })
+  })
+}
+
+
+

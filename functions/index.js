@@ -11,7 +11,7 @@ app.set('view engine', 'hbs')
 app.set('views', 'templates/views')
 hbs.registerPartials('templates/partials')
 
-app.get("/", function (req, res) {
+app.get("", function (req, res) {
   res.render('index')
 });
 app.get("/user", function (req, res) {
