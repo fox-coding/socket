@@ -3,6 +3,7 @@ const submitInput = document.getElementById("chat_input");
 const chatWrapper = document.getElementById("chat_history");
 const logIn = document.getElementById("login_form");
 const signupForm = document.getElementById("register_form");
+const logoutBtn = document.getElementById("log_out");
 
 console.log("UI geladen");
 
@@ -35,7 +36,10 @@ submitForm.addEventListener("submit", (e) => {
 
 // Listen for auth status
 auth.onAuthStateChanged(user => {
-  if(user.emailVerified){
+  if(user){
+    if(user.emailVerified){
+      console.log('User eingeloggt UND verifiziert')
+    }
     console.log('User eingeloggt')
   }else{
     console.log('kein User')
@@ -78,6 +82,16 @@ if (logIn) {
         console.log('succefully logged in')
       }).catch(err => {
         console.log(err.message);
+      })
+  })
+}
+
+// LOG OUT
+if (logoutBtn) {
+  logoutBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      auth.signOut().then(() => {
+        console.log("user ausgeloggt")
       })
   })
 }
