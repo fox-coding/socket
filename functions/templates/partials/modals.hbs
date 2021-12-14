@@ -1,0 +1,96 @@
+<div class="modal modal-account" id="modal-account">
+    <button class="modal-close">
+        close
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+            <path d="M0 0h24v24H0V0z" fill="none" opacity=".87" />
+            <path
+                d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.59-13L12 10.59 8.41 7 7 8.41 10.59 12 7 15.59 8.41 17 12 13.41 15.59 17 17 15.59 13.41 12 17 8.41z" />
+        </svg>
+    </button>
+    <div class="block">
+        <h3>Log in</h3>
+        <form id="login_form">
+            <input id="log_email" type="email" placeholder="Email">
+            <input id="log_pass" type="password" placeholder="Password">
+            <button>Log in</button>
+            <div class="reset-pass">
+                <span>Forgott password? <a class="modal-open" data-modal="reset-pass-modal">Reset here</a>!</span>
+            </div>
+        </form>
+        <div class="error"></div>
+    </div>
+    <div class="bock">
+        <h3>Or create an account</h3>
+        <form id="register_form">
+            <input id="sgn_email" type="email" placeholder="Email">
+            <input id="sgn_pass" type="password" placeholder="Password">
+            <button>register</button>
+        </form>
+        <div class="error"></div>
+    </div>
+</div>
+
+<div class="reset-pass-modal modal" id="reset-pass">
+    <button class="modal-close">
+        close
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+            <path d="M0 0h24v24H0V0z" fill="none" opacity=".87" />
+            <path
+                d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.59-13L12 10.59 8.41 7 7 8.41 10.59 12 7 15.59 8.41 17 12 13.41 15.59 17 17 15.59 13.41 12 17 8.41z" />
+        </svg>
+    </button>
+    <div class="modal-content">
+        <h3>Reset password</h3>
+        <p>Please provide your account email-adress. We will send you a link, where you can enter a new password.</p>
+        <div>
+            <form class="pass-reset-form">
+                <input type="email" placeholder="enter email" id="reset_pass_mail">
+                <button>Ok</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-chat" id="modal-chat">
+    <button class="modal-close">
+        close
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+            <path d="M0 0h24v24H0V0z" fill="none" opacity=".87" />
+            <path
+                d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.59-13L12 10.59 8.41 7 7 8.41 10.59 12 7 15.59 8.41 17 12 13.41 15.59 17 17 15.59 13.41 12 17 8.41z" />
+        </svg>
+    </button>
+    <div class="block">
+        <h2>Chatverlauf</h2>
+        <div id="chat_history">
+        </div>
+        <form id="chat_form">
+            <input type="text" name="chat-input" id="chat_input" />
+            <button>senden</button>
+        </form>
+    </div>
+</div>
+
+<div class="modal modal-alert">
+    <button class="modal-close">
+        close
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+            <path d="M0 0h24v24H0V0z" fill="none" opacity=".87" />
+            <path
+                d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.59-13L12 10.59 8.41 7 7 8.41 10.59 12 7 15.59 8.41 17 12 13.41 15.59 17 17 15.59 13.41 12 17 8.41z" />
+        </svg>
+    </button>
+    <div class="block message">
+    </div>
+    <button class="modal-close no-styling">OK</button>
+</div>
+
+<div class="event-overlay modal-close"></div>
+<div class="loading-inicator">
+    <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>

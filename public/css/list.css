@@ -1,0 +1,92 @@
+.ListComponent {
+    background: linear-gradient(160deg, var(--paper), var(--paper-shade));
+    color: var(--blue-2);
+    font-family: "Lato", sans-serif;
+    border: solid 1px var(--black);
+    box-shadow: 0 0 0.5rem #351430;
+    /* min-width: 15rem; */
+    text-align: left;
+    margin: 1rem;
+    padding: 1rem;
+  }
+  
+  .ListComponent button {
+    color: var(--blue-2);
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    border: solid 1px var(--blue-2);
+  }
+  
+  .two-games-toggle-buttons-container {
+    display: flex;
+  }
+  
+  .player-info {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 1rem;
+  }
+  
+  .name-of-player {
+    font-family: "Holtwood One SC", serif;
+    margin-left: 1rem;
+  }
+  
+  .player-is {
+    flex-grow: 1;
+    text-align: end;
+    margin-left: 1rem;
+  }
+  
+  .upper-result-component {
+    margin-bottom: 0.3rem;
+  }
+  .upper-result-component-container {
+    display: flex;
+  }
+  
+  .result-row {
+    display: flex;
+  }
+  .result-row button {
+    border-bottom: none;
+    min-width: 7rem;
+    text-align: left;
+    padding: 0.2rem 0.3rem;
+    background: transparent;
+  }
+  .result-row .category {
+    border: solid 1px var(--blue-2);
+    min-width: 7rem;
+    max-width: 7rem;
+    text-align: left;
+    padding: 0.2rem 0.3rem;
+  }
+  .result-row .result {
+    border: solid 1px var(--blue-2);
+    border-bottom: none;
+    min-width: 3rem;
+    padding: 0.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .result-row .result-bold {
+    font-weight: bold;
+  }
+  .result-row .result-red {
+    color: red;
+  }
+  
+  .result-row .double {
+    border-top: double 3px var(--blue-2);
+    border-bottom: double 3px var(--blue-2);
+  }
+  .result-row .between-doubles {
+    border-top: none;
+    border-bottom: none;
+  }
+  
+  .two-wins-cells {
+    display: flex;
+  }

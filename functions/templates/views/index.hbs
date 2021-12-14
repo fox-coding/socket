@@ -1,57 +1,42 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Socket - Playground</title>
-  </head>
-  <body>
-    <h2>Log-In</h2>
-    <form id="login_form">
-        <input id="log_email" type="email" placeholder="Email">
-        <input id="log_pass" type="password" placeholder="Password">
-        <button>Anmelden</button>
-    </form>
 
-    <h2>Registrierung</h2>
-    <form id="register_form">
-        <input id="sgn_email" type="email" placeholder="Email">
-        <input id="sgn_pass" type="password" placeholder="Password">
-        <button>Registrieren</button>
-    </form>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {{>styles}}
+  <title>Socket - Playground</title>
+</head>
 
-    <h2>Log-Out</h2>
-    <button id="log_out">Abmelden</button>
+<body>
+  {{>topnav}}
+  <div class="content-wrapper">
+  </div>
+  <h2>Spiel</h2>
+  <div class="game-wrapper">
+    {{>game}}
+  </div>
+  {{>modals}}
+  <div class="event-overlay modal-close"></div>
 
+  <script src="/js/firebase.min.js"></script>
+  <script>
 
+    var firebaseConfig = {
+      apiKey: "AIzaSyAE5miNmyfRHpWpTxaCwXE2QBonvbb9P8k",
+      authDomain: "socket-playground.firebaseapp.com",
+      projectId: "socket-playground",
+      storageBucket: "socket-playground.appspot.com",
+      messagingSenderId: "700123376335",
+      appId: "1:700123376335:web:09c79341f316a3c80b25ba"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+    const functions = firebase.functions();
+    db.settings({ timestampsInSnapshots: true });
+  </script>
+  <script src="/js/ui.js"></script>
+</body>
 
-
-
-
-    <h2>Chatverlauf</h2>
-    <div id="chat_history">
-    </div>
-    <form id="chat_form">
-      <input type="text" name="chat-input" id="chat_input" />
-      <button>senden</button>
-    </form>
-    <script src="/js/firebase.min.js"></script>
-    <script>
-
-      var firebaseConfig = {
-         apiKey: "AIzaSyAE5miNmyfRHpWpTxaCwXE2QBonvbb9P8k",
-        authDomain: "socket-playground.firebaseapp.com",
-        projectId:"socket-playground", 
-        storageBucket: "socket-playground.appspot.com",
-        messagingSenderId: "700123376335", 
-        appId:"1:700123376335:web:09c79341f316a3c80b25ba" 
-      };
-      firebase.initializeApp(firebaseConfig); 
-      const auth = firebase.auth();
-      const db = firebase.firestore(); 
-      const functions = firebase.functions();
-      db.settings({timestampsInSnapshots: true});
-    </script>
-    <script src="/js/ui.js"></script>
-  </body>
 </html>

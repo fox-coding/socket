@@ -1,0 +1,110 @@
+.DiceRoller {
+    border: 1px solid #2e1d18;
+    align-self: center;
+    flex-grow: 1;
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem;
+    background-image: url("/assets/Holz-d_nahtlos_verschuss_oel.jpg");
+    box-shadow: 0 0 0.5rem #351430;
+  }
+  
+  .round-counter {
+    font-family: "Holtwood One SC", serif;
+    color: var(--white);
+  }
+  
+  .roll-counter img {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  
+  .button-container {
+    min-height: 155px;
+    margin: 1rem;
+  }
+  
+  .button-container button {
+    margin: 1rem;
+    background: rgba(0, 255, 123, 0.1);
+    min-width: 108px;
+    min-height: 53px;
+  }
+  
+  .dices-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .dices-rolled {
+    min-width: 502px;
+    max-width: 542px;
+    min-height: 118px;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: 1rem;
+    border: solid 1px #221111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("/assets/Kork_nahtlos_verschuss_oel.jpg");
+    box-shadow: 0 0 1rem #2e1d18;
+  }
+  
+  .dices-saved {
+    min-width: 502px;
+    max-width: 542px;
+    min-height: 118px;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: 1rem;
+    border: solid 1px #221111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("/assets/Kork_nahtlos_verschuss_oel.jpg");
+    background-position: top right;
+    box-shadow: 0 0 1rem #2e1d18;
+  }
+  
+  .dice-roll {
+    margin: 0 0.3rem;
+    cursor: pointer;
+    border: solid 2px transparent;
+    max-height: 84px;
+  }
+  
+  .dice-roll:hover {
+    border: solid 2px var(--turquoise);
+  }
+  
+  .dice-roll img {
+    width: 5rem;
+    height: 5rem;
+    filter: drop-shadow(0rem 0rem 0.5rem #221111);
+  }
+  
+  .dice-saved {
+    margin: 0 0.3rem;
+    cursor: pointer;
+    border: solid 2px transparent;
+    max-height: 84px;
+  }
+  
+  .dice-saved img {
+    width: 5rem;
+    height: 5rem;
+    filter: drop-shadow(0rem 0rem 0.5rem);
+  }
+  
+  .dice-saved:hover {
+    border: solid 2px var(--turquoise);
+  }
+  
+  .winner-is {
+    font-family: "Holtwood One SC", serif;
+    color: var(--white);
+    font-size: 2rem;
+    flex-grow: 1;
+  }
