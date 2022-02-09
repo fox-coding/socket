@@ -18,4 +18,8 @@ app.get("/user", function (req, res) {
   var name = req.query.name
   res.send({name:name, age:32, adress:"Libanon"});
 });
+app.get("/room", function (req, res) {
+  var id = req.query.id
+  res.render('gameRoom',{id:id})
+});
 exports.app = functions.https.onRequest(app);

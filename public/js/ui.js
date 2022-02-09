@@ -1,4 +1,5 @@
 const submitForm = document.getElementById("chat_form");
+const createGame = document.getElementById('create_game_room');
 const submitInput = document.getElementById("chat_input");
 const chatWrapper = document.getElementById("chat_history");
 const logIn = document.getElementById("login_form");
@@ -172,5 +173,21 @@ document.querySelector('body').addEventListener('click', function (e) {
   }
   if (me.classList.contains('modal-close')) {
       closeModal()
+  }
+  if (me.classList.contains('start-game')) {
+    db.collection("gamerooms").add({})
+    .then((docRef) => {
+        var roomID = docRef.id
+        console.log("Document written with ID: ", roomID);
+
+        // db.collection("gamerooms").doc(roomID).collection('players').doc(name).set({
+        //   name: name,
+        //   id: userid
+        // })
+        location.href = location.href+"room?id="+roomID
+    })
+    .catch((error) => {
+        console.error("Error adding document: ", error);
+    });
   }
 })

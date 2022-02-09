@@ -12,9 +12,12 @@
   {{>topnav}}
   <div class="content-wrapper">
   </div>
-  <h1>15 auf die 5 😊</h1>
+  <h1>15 auf die 5 😊 - Wilkommen im Spiel <span id="game_room_id">{{id}}</span></h1>
+  <div class="player-form-wrapper">
+        <form class="player-form"></form>
+  </div>
   <div class="game-wrapper">
-  <button class="start-game">start a new game</button>
+    {{>game}}
   </div>
   {{>modals}}
   <div class="event-overlay modal-close"></div>
@@ -37,6 +40,7 @@
     db.settings({ timestampsInSnapshots: true });
   </script>
   <script src="/js/ui.js"></script>
+  <script src="/js/game.js"></script>
 </body>
 
 </html>
