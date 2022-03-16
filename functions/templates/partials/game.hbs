@@ -1,6 +1,48 @@
 <div id="root">
-  <div class="App">
-    <div class="ListComponent dummy-element-player-card">
+      <div class="dice-roller-container">
+      <div class="DiceRoller">
+        <div class="button-container">
+          <div class="round-counter">Runde 1</div>
+          <button class="roll-button">Gib mir 5 !</button>
+          <div>
+            <div class="roll-counter">
+              <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAI4AAACOCAYAAADn/TAIAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAABvIAAAbyAFhV1OeAAAAB3RJTUUH5QcDDDk3leuCvgAABAJJREFUeNrt3L9PE2Ecx/HPcxikg4lusGoiZWCCkMDO4MBsjJPGf8HGQcLFOBiNODDp4OAk6CIkOjQxCkaCQvDHIArFUSfccBEfh7P1KlLvSrm73vN+J02kqQ53r3zvueek0h75fknW2trP1m5JkrHWilf+XsG53Qqdb6uJiYuK1fT927U/VypLHFjHXpXKUu38z0zf+T+YQqFLK8vlOnW8nJ5CkqSV5bIKha46KyaM5vPma3X39NfQEBkTEPn65b2OnxjS9vZ3SZJX/cCLhTnQ0K6qFrp7+rUwP1t736uuaQYGR0FDDfEMDI5q5vf61/h+Sb5/HTQU+bLl+6Xg9toYAxqKjMdaK88Yo431RY4IRWpjfVHGmOCuimlDcaeOF94tJIq2WN6SUfAYgZFDcSaOMZihZvI4BAQcAg4Bh4BDBBwCDgGHgEPASTyjy2xpZ7hMPHKIisTqquGUAafpqQIgh+G04lIEIIfgtHrtAh4HFscseIHD3Rdw2v8Eg4eJQ8BhIgCHtQ5xqSLgEHAIOAQcohTh8DwJOOChZOGwzwKcTE4cJhqLYwJOMlOBaePAxGn1SQaNQ5eqVp1s0Di4xuGkt3eZ+Sq3OLfroANOZDxgAQ6xxiHgEAGHgEPAIeCQ4x3iEOxur/0k9pJCx4h9nMZYAAScfYMBEHD2jcZ1QB5osvVvAccRNK7i4XacgJP2ZHBp6jBxCDhZmAiuTB0mDgGHgMMlBDjZiOdLwCHgEHAIOKxzCDgEnHaYOq5MNSYOASftqeDSGsrZicM3gwEn9ZPN/zkGD2gixu9VVQ9EzIegru8JAacJRGwkAodY4xBwCDgEHCLgEHAohfhGroyW9W8FYx+nTcBkDRFw2hBMFgCxxmlzNK34+8BxEE1aeICTAzRp4AFOTtAkjQc4BBzXp02SUwc4BBxKbuoAh4BDwCHgEHCoJeXh12uAQ83dtfHfKvJ523zQU42JQ8Bh2gCHRXLGF9/AyRmepO7YgJMjPEne5gMnJ3iS3hsCTg7wpLGhyD5OG99x8XtVxO04AYcIOAQcAg4Bh4BDBBwCDgGHgEPAIQIOHVTGGBkFT8h5RE6Re/d2Xsbab5KOcjQo3sTxTId2fv7gaFDsS5UkiasVRUVjrZU3++he7Q2iKPl+KZg4ax9eqtg3wuShhpNGkj6uLaq3OBzcjhf7RrSyXK5+oIPDRH+h8STp+bM59RaHg/f+9UGmDoXQGEn209ornSwO1d6v2wCcvHnlz6qZNQ9oAgN2c3NVp89caPzhw52derP6tG768HLrJamrev6fPJ6Op+3hg7vgcQ/MkfAy5dbkteZG1flzZ+vWO1NTN6o/H+NA5waLZ63V+Pil0KDY0djYqYY2fgHYrgOObnSYLwAAAABJRU5ErkJggg=="
+                alt="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAI4AAACOCAYAAADn/TAIAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAABvIAAAbyAFhV1OeAAAAB3RJTUUH5QcDDDk3leuCvgAABAJJREFUeNrt3L9PE2Ecx/HPcxikg4lusGoiZWCCkMDO4MBsjJPGf8HGQcLFOBiNODDp4OAk6CIkOjQxCkaCQvDHIArFUSfccBEfh7P1KlLvSrm73vN+J02kqQ53r3zvueek0h75fknW2trP1m5JkrHWilf+XsG53Qqdb6uJiYuK1fT927U/VypLHFjHXpXKUu38z0zf+T+YQqFLK8vlOnW8nJ5CkqSV5bIKha46KyaM5vPma3X39NfQEBkTEPn65b2OnxjS9vZ3SZJX/cCLhTnQ0K6qFrp7+rUwP1t736uuaQYGR0FDDfEMDI5q5vf61/h+Sb5/HTQU+bLl+6Xg9toYAxqKjMdaK88Yo431RY4IRWpjfVHGmOCuimlDcaeOF94tJIq2WN6SUfAYgZFDcSaOMZihZvI4BAQcAg4Bh4BDBBwCDgGHgEPASTyjy2xpZ7hMPHKIisTqquGUAafpqQIgh+G04lIEIIfgtHrtAh4HFscseIHD3Rdw2v8Eg4eJQ8BhIgCHtQ5xqSLgEHAIOAQcohTh8DwJOOChZOGwzwKcTE4cJhqLYwJOMlOBaePAxGn1SQaNQ5eqVp1s0Di4xuGkt3eZ+Sq3OLfroANOZDxgAQ6xxiHgEAGHgEPAIeCQ4x3iEOxur/0k9pJCx4h9nMZYAAScfYMBEHD2jcZ1QB5osvVvAccRNK7i4XacgJP2ZHBp6jBxCDhZmAiuTB0mDgGHgMMlBDjZiOdLwCHgEHAIOKxzCDgEnHaYOq5MNSYOASftqeDSGsrZicM3gwEn9ZPN/zkGD2gixu9VVQ9EzIegru8JAacJRGwkAodY4xBwCDgEHCLgEHAohfhGroyW9W8FYx+nTcBkDRFw2hBMFgCxxmlzNK34+8BxEE1aeICTAzRp4AFOTtAkjQc4BBzXp02SUwc4BBxKbuoAh4BDwCHgEHCoJeXh12uAQ83dtfHfKvJ523zQU42JQ8Bh2gCHRXLGF9/AyRmepO7YgJMjPEne5gMnJ3iS3hsCTg7wpLGhyD5OG99x8XtVxO04AYcIOAQcAg4Bh4BDBBwCDgGHgEPAIQIOHVTGGBkFT8h5RE6Re/d2Xsbab5KOcjQo3sTxTId2fv7gaFDsS5UkiasVRUVjrZU3++he7Q2iKPl+KZg4ax9eqtg3wuShhpNGkj6uLaq3OBzcjhf7RrSyXK5+oIPDRH+h8STp+bM59RaHg/f+9UGmDoXQGEn209ornSwO1d6v2wCcvHnlz6qZNQ9oAgN2c3NVp89caPzhw52derP6tG768HLrJamrev6fPJ6Op+3hg7vgcQ/MkfAy5dbkteZG1flzZ+vWO1NTN6o/H+NA5waLZ63V+Pil0KDY0djYqYY2fgHYrgOObnSYLwAAAABJRU5ErkJggg=="
+              />
+              <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAI4AAACOCAYAAADn/TAIAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAABvIAAAbyAFhV1OeAAAAB3RJTUUH5QcDDQALtcIZtAAAA7JJREFUeNrt3b9vE2cYwPHnNRGNkTp0g7EMxQxM0EqwMzAwV1UnUP8FIgYQp4qhalU6MNGhAxOhXQpSO0RC/KgagRIBYiAtOGs7Rd3oUr0drrZs2uKzHfDF9/lKJ9mRY6J7P3ru7DNJxP904cKZyDn37+e8FRGRcs5hm7+tXNutgfXOURRLMVbXl7/u3+5279uxDdu63fv99V++dmU0mHZ7MdbXVobU2Ro9hSIiYn1tJdrtxSErqXdjz552bHYfxN59h/popJRKIr//9iTe3f9+vHjxZ0REtHoPuHf3BjT6Vz0Le/cdip/u3ex/vRURcf3alTh85Dg0eiWew0eO9895UlEsRVF8Do0qH7aKYql8eZ1SgkaV8eSco5VSiufPVu0RVer5s9VIKZWvqkwbjTt1WoPvFkrVTpa3IkV5GcHI0TgTJyVmNEktu0DgCByBI3AkcASOwBE4AkcaaqFuP1CKcyOvgeS4mCzdjNepLteqqoAByKFqajTTfJ/mAM60iw9PA+Fs16LD0yA4273Y8DQAzutaZHgadnIscGY+FUwdE0fgCBwJHIEjcEbl4iY4XnKDYxqBY2HVpIkD5ZzDscDgmDbgWGiN8cq2Dh9Wn+blNYANPlRNuvjQNHziTDJ9oAGnMiRYwJFzHIEjgSNwBI7AETgSOAJH4AgcCRyBI3AEjsCRwBE4AkfgCBwJHIEjcASOwJHAETgCR+AIHAkcgSNwBI7AkcAROAJH4KihLdgF9azKnyaY5W+a95vVdyCYOgACZweDmSUecHY4mFkBcnI8R2he13OCI3BMm9lOHXDABEcOVaYBOJpHoOAIHIEjcPRy23VZIMfFNKsr5D5W4eTXxBE4Dlc1/zfAETimDjiqOUpwTB1w4HlzGMGBcKJ8WL1mTfOm3ps87IEzB4D8vypVAlSHE2pw5ORY4AgcgSOBI3AEjsAROBI4AkezKkVEuF6lsSfO40d37AWNN21SSiaOJugPhyqN367WQvl5nJQSPKp6mCrPcYpiyd7QWGhufH+1PFT9srEaBzpHw2FLo9BsPP05OgePle/jHOgcjTu3b/Ye4L0dvYxmV0TE+tpKdA4eK782+IBfNx7Ee50PIsrPIhs9Gpo2gw1Nlw8/+iQ2Nx9GROT/erCaB6bn4NKXn47+hh9/WB68u5hzDluztl6PHt6Kt3bvrq7tq0uf9W//80Rv26HNQvPdt99MNqpOnjwROf/Vv3/+/NneE7fs4LlB8k7OOS5f/mJoUJw+9fErbfwNS4fBdcKkDIcAAAAASUVORK5CYII="
+                alt="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAI4AAACOCAYAAADn/TAIAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAABvIAAAbyAFhV1OeAAAAB3RJTUUH5QcDDQALtcIZtAAAA7JJREFUeNrt3b9vE2cYwPHnNRGNkTp0g7EMxQxM0EqwMzAwV1UnUP8FIgYQp4qhalU6MNGhAxOhXQpSO0RC/KgagRIBYiAtOGs7Rd3oUr0drrZs2uKzHfDF9/lKJ9mRY6J7P3ru7DNJxP904cKZyDn37+e8FRGRcs5hm7+tXNutgfXOURRLMVbXl7/u3+5279uxDdu63fv99V++dmU0mHZ7MdbXVobU2Ro9hSIiYn1tJdrtxSErqXdjz552bHYfxN59h/popJRKIr//9iTe3f9+vHjxZ0REtHoPuHf3BjT6Vz0Le/cdip/u3ex/vRURcf3alTh85Dg0eiWew0eO9895UlEsRVF8Do0qH7aKYql8eZ1SgkaV8eSco5VSiufPVu0RVer5s9VIKZWvqkwbjTt1WoPvFkrVTpa3IkV5GcHI0TgTJyVmNEktu0DgCByBI3AkcASOwBE4AkcaaqFuP1CKcyOvgeS4mCzdjNepLteqqoAByKFqajTTfJ/mAM60iw9PA+Fs16LD0yA4273Y8DQAzutaZHgadnIscGY+FUwdE0fgCBwJHIEjcEbl4iY4XnKDYxqBY2HVpIkD5ZzDscDgmDbgWGiN8cq2Dh9Wn+blNYANPlRNuvjQNHziTDJ9oAGnMiRYwJFzHIEjgSNwBI7AETgSOAJH4AgcCRyBI3AEjsCRwBE4AkfgCBwJHIEjcASOwJHAETgCR+AIHAkcgSNwBI7AkcAROAJH4KihLdgF9azKnyaY5W+a95vVdyCYOgACZweDmSUecHY4mFkBcnI8R2he13OCI3BMm9lOHXDABEcOVaYBOJpHoOAIHIEjcPRy23VZIMfFNKsr5D5W4eTXxBE4Dlc1/zfAETimDjiqOUpwTB1w4HlzGMGBcKJ8WL1mTfOm3ps87IEzB4D8vypVAlSHE2pw5ORY4AgcgSOBI3AEjsAROBI4AkezKkVEuF6lsSfO40d37AWNN21SSiaOJugPhyqN367WQvl5nJQSPKp6mCrPcYpiyd7QWGhufH+1PFT9srEaBzpHw2FLo9BsPP05OgePle/jHOgcjTu3b/Ye4L0dvYxmV0TE+tpKdA4eK782+IBfNx7Ee50PIsrPIhs9Gpo2gw1Nlw8/+iQ2Nx9GROT/erCaB6bn4NKXn47+hh9/WB68u5hzDluztl6PHt6Kt3bvrq7tq0uf9W//80Rv26HNQvPdt99MNqpOnjwROf/Vv3/+/NneE7fs4LlB8k7OOS5f/mJoUJw+9fErbfwNS4fBdcKkDIcAAAAASUVORK5CYII="
+              />
+              <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAI4AAACOCAYAAADn/TAIAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAABvIAAAbyAFhV1OeAAAAB3RJTUUH5QcDDQEAOwvxfQAAA1lJREFUeNrt3b9vW1UcxuH33KKSDEiwtStI1B06tarU7h0YOiPEBOJfIGJoVQsxIBBl6AQDAxMpLLQSDJEQtIiokKj8GAi0CSNMYSsL5TBcbGygxjYRBN/nI10psawM5z753nMdJ0nuUb+/klrr8PNad5Ok1FrjWLyjPbe7I+e75sKFZzNTq2+9Nvx4e/uGhe3Ysb19Y3j+L6++/vdglpeXsrmxNqbO0ekplCTZ3FjL8vLSmJUyiua7nc9y6PCxIRqplJbID99/lYcfOZk7d35KkjSDJ3x8/So0+lMDC4cOH8v1a1eGjzeDPc3xE2eg0UQ8x0+cyeXf9r+l319Jv/8SNJr6stXvr7S316UUaDQ1nlprmlJKbt9atyKaqtu31lNKae+qTBvNOnWa0VcLpek2y7spaX+MYORololTCjOap8YSCByBI3AEjgSOwBE4AkfgSOAIHIEjcASOBI7AETgCR+BI4AgcgSNwBI4EjsAROAJH4EjgCByBI3AEjgSOwBE4AkcCR+AIHO377rMEkys5d8//WVDzQunsuvhfDrODAQicubF0HRA4ewCmi4AaaM7V/8PXBGfB0XQFTwONwNlnaBYZZwMNPOAIHIHT+Q3xIl6uTByBI3AEjsCRwBE4Akfg7Lv+qzdYLeIbu0wcgdPV735wQAVHJo4pYNqA82+d1EXfS7lUQTNXfiEve/tGq67ctYGzR3i6dpsPzj8E1NXXhcCZA5IXEcGRuyqBI3AEjgSOwBE4AkfgSOAIHIEjcASOBI7AETgCR+BI4AgcgSNwBI4EjsAROAJH4EjgCByBI3AEjgSOwBE4AkcCR+AIHIGjhayUkpL2z/L7u/yaui+/uJZS649JHrQamm3iNOVA7v7ys9XQzJeqJImrlaZFU2tNc+XdN4cPSNPU76+0E2fr60/SO3ra5NHESZMk32yt50jvVHs73jt6Opsba4MnHLBM+gOaJkk++vBqjvROtY/91RNNHY2gKUnqt1uf5tHeyeHjYy8AXnzl+d93zfY80LQG6s7OzTz+xDOTn3z/wYP5/OYHY9PH0a0jydLg/L//3ups2t55+w14ugfmgdFtyqsXX5xvVD391JNj+51Ll14efP6QhV4YLE2tNefPPzcyKO7m7NnHJtr4FYRnigmI3qP+AAAAAElFTkSuQmCC"
+                alt="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAI4AAACOCAYAAADn/TAIAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAABvIAAAbyAFhV1OeAAAAB3RJTUUH5QcDDQEAOwvxfQAAA1lJREFUeNrt3b9vW1UcxuH33KKSDEiwtStI1B06tarU7h0YOiPEBOJfIGJoVQsxIBBl6AQDAxMpLLQSDJEQtIiokKj8GAi0CSNMYSsL5TBcbGygxjYRBN/nI10psawM5z753nMdJ0nuUb+/klrr8PNad5Ok1FrjWLyjPbe7I+e75sKFZzNTq2+9Nvx4e/uGhe3Ysb19Y3j+L6++/vdglpeXsrmxNqbO0ekplCTZ3FjL8vLSmJUyiua7nc9y6PCxIRqplJbID99/lYcfOZk7d35KkjSDJ3x8/So0+lMDC4cOH8v1a1eGjzeDPc3xE2eg0UQ8x0+cyeXf9r+l319Jv/8SNJr6stXvr7S316UUaDQ1nlprmlJKbt9atyKaqtu31lNKae+qTBvNOnWa0VcLpek2y7spaX+MYORololTCjOap8YSCByBI3AEjgSOwBE4AkfgSOAIHIEjcASOBI7AETgCR+BI4AgcgSNwBI4EjsAROAJH4EjgCByBI3AEjgSOwBE4AkcCR+AIHO377rMEkys5d8//WVDzQunsuvhfDrODAQicubF0HRA4ewCmi4AaaM7V/8PXBGfB0XQFTwONwNlnaBYZZwMNPOAIHIHT+Q3xIl6uTByBI3AEjsCRwBE4Akfg7Lv+qzdYLeIbu0wcgdPV735wQAVHJo4pYNqA82+d1EXfS7lUQTNXfiEve/tGq67ctYGzR3i6dpsPzj8E1NXXhcCZA5IXEcGRuyqBI3AEjgSOwBE4AkfgSOAIHIEjcASOBI7AETgCR+BI4AgcgSNwBI4EjsAROAJH4EjgCByBI3AEjgSOwBE4AkcCR+AIHIGjhayUkpL2z/L7u/yaui+/uJZS649JHrQamm3iNOVA7v7ys9XQzJeqJImrlaZFU2tNc+XdN4cPSNPU76+0E2fr60/SO3ra5NHESZMk32yt50jvVHs73jt6Opsba4MnHLBM+gOaJkk++vBqjvROtY/91RNNHY2gKUnqt1uf5tHeyeHjYy8AXnzl+d93zfY80LQG6s7OzTz+xDOTn3z/wYP5/OYHY9PH0a0jydLg/L//3ups2t55+w14ugfmgdFtyqsXX5xvVD391JNj+51Ll14efP6QhV4YLE2tNefPPzcyKO7m7NnHJtr4FYRnigmI3qP+AAAAAElFTkSuQmCC"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="dices-container">
+          <div class="dices-rolled">
+            <div class="dice-roll"></div>
+            <div class="dice-roll"></div>
+          </div>
+          <div class="dices-saved">
+            <div class="dice-saved"></div>
+            <div class="dice-saved"></div>
+            <div class="dice-saved"></div>
+          </div>
+        </div>
+        <div class="winner-is">
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+      <div class="NewGameButton">
+        <button>Neues Spiel, neues Glück!</button
+        ><a href="/playermode"><button>Spielmodus ändern</button></a>
+      </div>
+    </div>
+      <div class="ListComponent dummy-element-player-card">
       <div class="player-info">
         <div>Spielkind:</div>
         <b class="name-of-player">Spieler 1</b>
@@ -93,138 +135,6 @@
         </div>
       </div>
     </div>
-    <div class="dice-roller-container">
-      <div class="DiceRoller">
-        <div class="button-container">
-          <div class="round-counter">Runde 1</div>
-          <button class="roll-button">Gib mir 5 !</button>
-          <div>
-            <div class="roll-counter">
-              <img
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAI4AAACOCAYAAADn/TAIAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAABvIAAAbyAFhV1OeAAAAB3RJTUUH5QcDDDk3leuCvgAABAJJREFUeNrt3L9PE2Ecx/HPcxikg4lusGoiZWCCkMDO4MBsjJPGf8HGQcLFOBiNODDp4OAk6CIkOjQxCkaCQvDHIArFUSfccBEfh7P1KlLvSrm73vN+J02kqQ53r3zvueek0h75fknW2trP1m5JkrHWilf+XsG53Qqdb6uJiYuK1fT927U/VypLHFjHXpXKUu38z0zf+T+YQqFLK8vlOnW8nJ5CkqSV5bIKha46KyaM5vPma3X39NfQEBkTEPn65b2OnxjS9vZ3SZJX/cCLhTnQ0K6qFrp7+rUwP1t736uuaQYGR0FDDfEMDI5q5vf61/h+Sb5/HTQU+bLl+6Xg9toYAxqKjMdaK88Yo431RY4IRWpjfVHGmOCuimlDcaeOF94tJIq2WN6SUfAYgZFDcSaOMZihZvI4BAQcAg4Bh4BDBBwCDgGHgEPASTyjy2xpZ7hMPHKIisTqquGUAafpqQIgh+G04lIEIIfgtHrtAh4HFscseIHD3Rdw2v8Eg4eJQ8BhIgCHtQ5xqSLgEHAIOAQcohTh8DwJOOChZOGwzwKcTE4cJhqLYwJOMlOBaePAxGn1SQaNQ5eqVp1s0Di4xuGkt3eZ+Sq3OLfroANOZDxgAQ6xxiHgEAGHgEPAIeCQ4x3iEOxur/0k9pJCx4h9nMZYAAScfYMBEHD2jcZ1QB5osvVvAccRNK7i4XacgJP2ZHBp6jBxCDhZmAiuTB0mDgGHgMMlBDjZiOdLwCHgEHAIOKxzCDgEnHaYOq5MNSYOASftqeDSGsrZicM3gwEn9ZPN/zkGD2gixu9VVQ9EzIegru8JAacJRGwkAodY4xBwCDgEHCLgEHAohfhGroyW9W8FYx+nTcBkDRFw2hBMFgCxxmlzNK34+8BxEE1aeICTAzRp4AFOTtAkjQc4BBzXp02SUwc4BBxKbuoAh4BDwCHgEHCoJeXh12uAQ83dtfHfKvJ523zQU42JQ8Bh2gCHRXLGF9/AyRmepO7YgJMjPEne5gMnJ3iS3hsCTg7wpLGhyD5OG99x8XtVxO04AYcIOAQcAg4Bh4BDBBwCDgGHgEPAIQIOHVTGGBkFT8h5RE6Re/d2Xsbab5KOcjQo3sTxTId2fv7gaFDsS5UkiasVRUVjrZU3++he7Q2iKPl+KZg4ax9eqtg3wuShhpNGkj6uLaq3OBzcjhf7RrSyXK5+oIPDRH+h8STp+bM59RaHg/f+9UGmDoXQGEn209ornSwO1d6v2wCcvHnlz6qZNQ9oAgN2c3NVp89caPzhw52derP6tG768HLrJamrev6fPJ6Op+3hg7vgcQ/MkfAy5dbkteZG1flzZ+vWO1NTN6o/H+NA5waLZ63V+Pil0KDY0djYqYY2fgHYrgOObnSYLwAAAABJRU5ErkJggg=="
-                alt="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAI4AAACOCAYAAADn/TAIAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAABvIAAAbyAFhV1OeAAAAB3RJTUUH5QcDDDk3leuCvgAABAJJREFUeNrt3L9PE2Ecx/HPcxikg4lusGoiZWCCkMDO4MBsjJPGf8HGQcLFOBiNODDp4OAk6CIkOjQxCkaCQvDHIArFUSfccBEfh7P1KlLvSrm73vN+J02kqQ53r3zvueek0h75fknW2trP1m5JkrHWilf+XsG53Qqdb6uJiYuK1fT927U/VypLHFjHXpXKUu38z0zf+T+YQqFLK8vlOnW8nJ5CkqSV5bIKha46KyaM5vPma3X39NfQEBkTEPn65b2OnxjS9vZ3SZJX/cCLhTnQ0K6qFrp7+rUwP1t736uuaQYGR0FDDfEMDI5q5vf61/h+Sb5/HTQU+bLl+6Xg9toYAxqKjMdaK88Yo431RY4IRWpjfVHGmOCuimlDcaeOF94tJIq2WN6SUfAYgZFDcSaOMZihZvI4BAQcAg4Bh4BDBBwCDgGHgEPASTyjy2xpZ7hMPHKIisTqquGUAafpqQIgh+G04lIEIIfgtHrtAh4HFscseIHD3Rdw2v8Eg4eJQ8BhIgCHtQ5xqSLgEHAIOAQcohTh8DwJOOChZOGwzwKcTE4cJhqLYwJOMlOBaePAxGn1SQaNQ5eqVp1s0Di4xuGkt3eZ+Sq3OLfroANOZDxgAQ6xxiHgEAGHgEPAIeCQ4x3iEOxur/0k9pJCx4h9nMZYAAScfYMBEHD2jcZ1QB5osvVvAccRNK7i4XacgJP2ZHBp6jBxCDhZmAiuTB0mDgGHgMMlBDjZiOdLwCHgEHAIOKxzCDgEnHaYOq5MNSYOASftqeDSGsrZicM3gwEn9ZPN/zkGD2gixu9VVQ9EzIegru8JAacJRGwkAodY4xBwCDgEHCLgEHAohfhGroyW9W8FYx+nTcBkDRFw2hBMFgCxxmlzNK34+8BxEE1aeICTAzRp4AFOTtAkjQc4BBzXp02SUwc4BBxKbuoAh4BDwCHgEHCoJeXh12uAQ83dtfHfKvJ523zQU42JQ8Bh2gCHRXLGF9/AyRmepO7YgJMjPEne5gMnJ3iS3hsCTg7wpLGhyD5OG99x8XtVxO04AYcIOAQcAg4Bh4BDBBwCDgGHgEPAIQIOHVTGGBkFT8h5RE6Re/d2Xsbab5KOcjQo3sTxTId2fv7gaFDsS5UkiasVRUVjrZU3++he7Q2iKPl+KZg4ax9eqtg3wuShhpNGkj6uLaq3OBzcjhf7RrSyXK5+oIPDRH+h8STp+bM59RaHg/f+9UGmDoXQGEn209ornSwO1d6v2wCcvHnlz6qZNQ9oAgN2c3NVp89caPzhw52derP6tG768HLrJamrev6fPJ6Op+3hg7vgcQ/MkfAy5dbkteZG1flzZ+vWO1NTN6o/H+NA5waLZ63V+Pil0KDY0djYqYY2fgHYrgOObnSYLwAAAABJRU5ErkJggg=="
-              />
-              <img
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAI4AAACOCAYAAADn/TAIAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAABvIAAAbyAFhV1OeAAAAB3RJTUUH5QcDDQALtcIZtAAAA7JJREFUeNrt3b9vE2cYwPHnNRGNkTp0g7EMxQxM0EqwMzAwV1UnUP8FIgYQp4qhalU6MNGhAxOhXQpSO0RC/KgagRIBYiAtOGs7Rd3oUr0drrZs2uKzHfDF9/lKJ9mRY6J7P3ru7DNJxP904cKZyDn37+e8FRGRcs5hm7+tXNutgfXOURRLMVbXl7/u3+5279uxDdu63fv99V++dmU0mHZ7MdbXVobU2Ro9hSIiYn1tJdrtxSErqXdjz552bHYfxN59h/popJRKIr//9iTe3f9+vHjxZ0REtHoPuHf3BjT6Vz0Le/cdip/u3ex/vRURcf3alTh85Dg0eiWew0eO9895UlEsRVF8Do0qH7aKYql8eZ1SgkaV8eSco5VSiufPVu0RVer5s9VIKZWvqkwbjTt1WoPvFkrVTpa3IkV5GcHI0TgTJyVmNEktu0DgCByBI3AkcASOwBE4AkcaaqFuP1CKcyOvgeS4mCzdjNepLteqqoAByKFqajTTfJ/mAM60iw9PA+Fs16LD0yA4273Y8DQAzutaZHgadnIscGY+FUwdE0fgCBwJHIEjcEbl4iY4XnKDYxqBY2HVpIkD5ZzDscDgmDbgWGiN8cq2Dh9Wn+blNYANPlRNuvjQNHziTDJ9oAGnMiRYwJFzHIEjgSNwBI7AETgSOAJH4AgcCRyBI3AEjsCRwBE4AkfgCBwJHIEjcASOwJHAETgCR+AIHAkcgSNwBI7AkcAROAJH4KihLdgF9azKnyaY5W+a95vVdyCYOgACZweDmSUecHY4mFkBcnI8R2he13OCI3BMm9lOHXDABEcOVaYBOJpHoOAIHIEjcPRy23VZIMfFNKsr5D5W4eTXxBE4Dlc1/zfAETimDjiqOUpwTB1w4HlzGMGBcKJ8WL1mTfOm3ps87IEzB4D8vypVAlSHE2pw5ORY4AgcgSOBI3AEjsAROBI4AkezKkVEuF6lsSfO40d37AWNN21SSiaOJugPhyqN367WQvl5nJQSPKp6mCrPcYpiyd7QWGhufH+1PFT9srEaBzpHw2FLo9BsPP05OgePle/jHOgcjTu3b/Ye4L0dvYxmV0TE+tpKdA4eK782+IBfNx7Ee50PIsrPIhs9Gpo2gw1Nlw8/+iQ2Nx9GROT/erCaB6bn4NKXn47+hh9/WB68u5hzDluztl6PHt6Kt3bvrq7tq0uf9W//80Rv26HNQvPdt99MNqpOnjwROf/Vv3/+/NneE7fs4LlB8k7OOS5f/mJoUJw+9fErbfwNS4fBdcKkDIcAAAAASUVORK5CYII="
-                alt="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAI4AAACOCAYAAADn/TAIAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAABvIAAAbyAFhV1OeAAAAB3RJTUUH5QcDDQALtcIZtAAAA7JJREFUeNrt3b9vE2cYwPHnNRGNkTp0g7EMxQxM0EqwMzAwV1UnUP8FIgYQp4qhalU6MNGhAxOhXQpSO0RC/KgagRIBYiAtOGs7Rd3oUr0drrZs2uKzHfDF9/lKJ9mRY6J7P3ru7DNJxP904cKZyDn37+e8FRGRcs5hm7+tXNutgfXOURRLMVbXl7/u3+5279uxDdu63fv99V++dmU0mHZ7MdbXVobU2Ro9hSIiYn1tJdrtxSErqXdjz552bHYfxN59h/popJRKIr//9iTe3f9+vHjxZ0REtHoPuHf3BjT6Vz0Le/cdip/u3ex/vRURcf3alTh85Dg0eiWew0eO9895UlEsRVF8Do0qH7aKYql8eZ1SgkaV8eSco5VSiufPVu0RVer5s9VIKZWvqkwbjTt1WoPvFkrVTpa3IkV5GcHI0TgTJyVmNEktu0DgCByBI3AkcASOwBE4AkcaaqFuP1CKcyOvgeS4mCzdjNepLteqqoAByKFqajTTfJ/mAM60iw9PA+Fs16LD0yA4273Y8DQAzutaZHgadnIscGY+FUwdE0fgCBwJHIEjcEbl4iY4XnKDYxqBY2HVpIkD5ZzDscDgmDbgWGiN8cq2Dh9Wn+blNYANPlRNuvjQNHziTDJ9oAGnMiRYwJFzHIEjgSNwBI7AETgSOAJH4AgcCRyBI3AEjsCRwBE4AkfgCBwJHIEjcASOwJHAETgCR+AIHAkcgSNwBI7AkcAROAJH4KihLdgF9azKnyaY5W+a95vVdyCYOgACZweDmSUecHY4mFkBcnI8R2he13OCI3BMm9lOHXDABEcOVaYBOJpHoOAIHIEjcPRy23VZIMfFNKsr5D5W4eTXxBE4Dlc1/zfAETimDjiqOUpwTB1w4HlzGMGBcKJ8WL1mTfOm3ps87IEzB4D8vypVAlSHE2pw5ORY4AgcgSOBI3AEjsAROBI4AkezKkVEuF6lsSfO40d37AWNN21SSiaOJugPhyqN367WQvl5nJQSPKp6mCrPcYpiyd7QWGhufH+1PFT9srEaBzpHw2FLo9BsPP05OgePle/jHOgcjTu3b/Ye4L0dvYxmV0TE+tpKdA4eK782+IBfNx7Ee50PIsrPIhs9Gpo2gw1Nlw8/+iQ2Nx9GROT/erCaB6bn4NKXn47+hh9/WB68u5hzDluztl6PHt6Kt3bvrq7tq0uf9W//80Rv26HNQvPdt99MNqpOnjwROf/Vv3/+/NneE7fs4LlB8k7OOS5f/mJoUJw+9fErbfwNS4fBdcKkDIcAAAAASUVORK5CYII="
-              />
-              <img
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAI4AAACOCAYAAADn/TAIAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAABvIAAAbyAFhV1OeAAAAB3RJTUUH5QcDDQEAOwvxfQAAA1lJREFUeNrt3b9vW1UcxuH33KKSDEiwtStI1B06tarU7h0YOiPEBOJfIGJoVQsxIBBl6AQDAxMpLLQSDJEQtIiokKj8GAi0CSNMYSsL5TBcbGygxjYRBN/nI10psawM5z753nMdJ0nuUb+/klrr8PNad5Ok1FrjWLyjPbe7I+e75sKFZzNTq2+9Nvx4e/uGhe3Ysb19Y3j+L6++/vdglpeXsrmxNqbO0ekplCTZ3FjL8vLSmJUyiua7nc9y6PCxIRqplJbID99/lYcfOZk7d35KkjSDJ3x8/So0+lMDC4cOH8v1a1eGjzeDPc3xE2eg0UQ8x0+cyeXf9r+l319Jv/8SNJr6stXvr7S316UUaDQ1nlprmlJKbt9atyKaqtu31lNKae+qTBvNOnWa0VcLpek2y7spaX+MYORololTCjOap8YSCByBI3AEjgSOwBE4AkfgSOAIHIEjcASOBI7AETgCR+BI4AgcgSNwBI4EjsAROAJH4EjgCByBI3AEjgSOwBE4AkcCR+AIHO377rMEkys5d8//WVDzQunsuvhfDrODAQicubF0HRA4ewCmi4AaaM7V/8PXBGfB0XQFTwONwNlnaBYZZwMNPOAIHIHT+Q3xIl6uTByBI3AEjsCRwBE4Akfg7Lv+qzdYLeIbu0wcgdPV735wQAVHJo4pYNqA82+d1EXfS7lUQTNXfiEve/tGq67ctYGzR3i6dpsPzj8E1NXXhcCZA5IXEcGRuyqBI3AEjgSOwBE4AkfgSOAIHIEjcASOBI7AETgCR+BI4AgcgSNwBI4EjsAROAJH4EjgCByBI3AEjgSOwBE4AkcCR+AIHIGjhayUkpL2z/L7u/yaui+/uJZS649JHrQamm3iNOVA7v7ys9XQzJeqJImrlaZFU2tNc+XdN4cPSNPU76+0E2fr60/SO3ra5NHESZMk32yt50jvVHs73jt6Opsba4MnHLBM+gOaJkk++vBqjvROtY/91RNNHY2gKUnqt1uf5tHeyeHjYy8AXnzl+d93zfY80LQG6s7OzTz+xDOTn3z/wYP5/OYHY9PH0a0jydLg/L//3ups2t55+w14ugfmgdFtyqsXX5xvVD391JNj+51Ll14efP6QhV4YLE2tNefPPzcyKO7m7NnHJtr4FYRnigmI3qP+AAAAAElFTkSuQmCC"
-                alt="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAI4AAACOCAYAAADn/TAIAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAABvIAAAbyAFhV1OeAAAAB3RJTUUH5QcDDQEAOwvxfQAAA1lJREFUeNrt3b9vW1UcxuH33KKSDEiwtStI1B06tarU7h0YOiPEBOJfIGJoVQsxIBBl6AQDAxMpLLQSDJEQtIiokKj8GAi0CSNMYSsL5TBcbGygxjYRBN/nI10psawM5z753nMdJ0nuUb+/klrr8PNad5Ok1FrjWLyjPbe7I+e75sKFZzNTq2+9Nvx4e/uGhe3Ysb19Y3j+L6++/vdglpeXsrmxNqbO0ekplCTZ3FjL8vLSmJUyiua7nc9y6PCxIRqplJbID99/lYcfOZk7d35KkjSDJ3x8/So0+lMDC4cOH8v1a1eGjzeDPc3xE2eg0UQ8x0+cyeXf9r+l319Jv/8SNJr6stXvr7S316UUaDQ1nlprmlJKbt9atyKaqtu31lNKae+qTBvNOnWa0VcLpek2y7spaX+MYORololTCjOap8YSCByBI3AEjgSOwBE4AkfgSOAIHIEjcASOBI7AETgCR+BI4AgcgSNwBI4EjsAROAJH4EjgCByBI3AEjgSOwBE4AkcCR+AIHO377rMEkys5d8//WVDzQunsuvhfDrODAQicubF0HRA4ewCmi4AaaM7V/8PXBGfB0XQFTwONwNlnaBYZZwMNPOAIHIHT+Q3xIl6uTByBI3AEjsCRwBE4Akfg7Lv+qzdYLeIbu0wcgdPV735wQAVHJo4pYNqA82+d1EXfS7lUQTNXfiEve/tGq67ctYGzR3i6dpsPzj8E1NXXhcCZA5IXEcGRuyqBI3AEjgSOwBE4AkfgSOAIHIEjcASOBI7AETgCR+BI4AgcgSNwBI4EjsAROAJH4EjgCByBI3AEjgSOwBE4AkcCR+AIHIGjhayUkpL2z/L7u/yaui+/uJZS649JHrQamm3iNOVA7v7ys9XQzJeqJImrlaZFU2tNc+XdN4cPSNPU76+0E2fr60/SO3ra5NHESZMk32yt50jvVHs73jt6Opsba4MnHLBM+gOaJkk++vBqjvROtY/91RNNHY2gKUnqt1uf5tHeyeHjYy8AXnzl+d93zfY80LQG6s7OzTz+xDOTn3z/wYP5/OYHY9PH0a0jydLg/L//3ups2t55+w14ugfmgdFtyqsXX5xvVD391JNj+51Ll14efP6QhV4YLE2tNefPPzcyKO7m7NnHJtr4FYRnigmI3qP+AAAAAElFTkSuQmCC"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="dices-container">
-          <div class="dices-rolled">
-            <div class="dice-roll"></div>
-            <div class="dice-roll"></div>
-          </div>
-          <div class="dices-saved">
-            <div class="dice-saved"></div>
-            <div class="dice-saved"></div>
-            <div class="dice-saved"></div>
-          </div>
-        </div>
-        <div class="winner-is">
-          <div></div>
-          <div></div>
-        </div>
-      </div>
-      <div class="NewGameButton">
-        <button>Neues Spiel, neues Glück!</button
-        ><a href="/playermode"><button>Spielmodus ändern</button></a>
-      </div>
-    </div>
-    <div class="ListComponent">
-      <div class="player-info">
-        Spielkind: <b class="name-of-player">Spieler 2</b>
-        <div class="player-is">🎲</div>
-      </div>
-      <div class="list-container">
-        <div class="result-row">
-          <button>Einser</button>
-          <div class="result"></div>
-        </div>
-        <div class="result-row">
-          <button>Zweier</button>
-          <div class="result"></div>
-        </div>
-        <div class="result-row">
-          <button>Dreier</button>
-          <div class="result"></div>
-        </div>
-        <div class="result-row">
-          <button>Vierer</button>
-          <div class="result"></div>
-        </div>
-        <div class="result-row">
-          <button>Fünfer</button>
-          <div class="result"></div>
-        </div>
-        <div class="result-row">
-          <button>Sechser</button>
-          <div class="result"></div>
-        </div>
-      </div>
-      <div class="upper-result-component">
-        <div class="result-row">
-          <div class="category double">Gesamt:</div>
-          <div class="result double"></div>
-        </div>
-        <div class="result-row">
-          <div class="category between-doubles">Bonus:</div>
-          <div class="result between-doubles"></div>
-        </div>
-        <div class="result-row">
-          <div class="category double">Gesamt oberer Teil:</div>
-          <div class="result result-bold double"></div>
-        </div>
-      </div>
-      <div class="list-container">
-        <div class="result-row">
-          <button>Dreierpasch</button>
-          <div class="result"></div>
-        </div>
-        <div class="result-row">
-          <button>Viererpasch</button>
-          <div class="result"></div>
-        </div>
-        <div class="result-row">
-          <button>Full House</button>
-          <div class="result"></div>
-        </div>
-        <div class="result-row">
-          <button>Kleine Straße</button>
-          <div class="result"></div>
-        </div>
-        <div class="result-row">
-          <button>Große Straße</button>
-          <div class="result"></div>
-        </div>
-        <div class="result-row">
-          <button>Kniffel</button>
-          <div class="result"></div>
-        </div>
-        <div class="result-row">
-          <button>Chance</button>
-          <div class="result"></div>
-        </div>
-      </div>
-      <div class="result-component">
-        <div class="result-row">
-          <div class="category double">Gesamt oberer Teil:</div>
-          <div class="result double"></div>
-        </div>
-        <div class="result-row">
-          <div class="category between-doubles">Gesamt unterer Teil:</div>
-          <div class="result result-bold between-doubles"></div>
-        </div>
-        <div class="result-row">
-          <div class="category double">Endsumme:</div>
-          <div class="result result-bold double"></div>
-        </div>
-      </div>
-    </div>
+  <div class="App">
   </div>
 </div>

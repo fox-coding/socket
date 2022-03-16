@@ -1,2 +1,22 @@
-.game-wrapper{
+.dummy-element-player-card{
+    display: none;
+}
+.player-form{
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+}
+.room-id{
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px;
+    margin-bottom: 20px;
+    background: #7bdd6f;
+    border: 1px solid;
+    border-radius: 10px;
+}
+.dice-roller-container{
+    max-width: 700px;
+    width: 100%;
+    margin: auto;
 }
