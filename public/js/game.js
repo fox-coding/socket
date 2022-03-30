@@ -1,8 +1,13 @@
 const roomID = document.getElementById('game_room_id').textContent;
+const existingPlayers = document.querySelector('.existing-players');
+var existingPlayersBtns;
 const playerform = document.querySelector('.player-form');
 const playerModal = document.querySelector('.player-form-wrapper');
+const rollBtn = document.querySelector('.roll-button');
+var turn;
+var gameStarted;
 var players = [];
-var player = "";
+var playerName;
 
 openModal(playerModal);
 
@@ -23,7 +28,6 @@ const createPlayerCard = function (id) {
 
         cpy.classList.remove('dummy-element-player-card');
 
-        console.log(amountPlayerCards.length)
         if(amountPlayerCards.lenght === 0){
             //insertBefore(cpy, document.querySelector('.dice-roller-container'));
             document.querySelector('.App').prepend(cpy)
@@ -55,10 +59,18 @@ const createNewPlayer = function (name) {
      }).then(()=>{
         //createPlayerCard(stringID)
 
-        db.collection("gamerooms").doc(roomID).update({
-            players:playerCount
-        })
+        if(playerCount === 1){
+            db.collection("gamerooms").doc(roomID).update({
+                players:playerCount,
+                turn:name,
+                gameStarted:false
+            })
 
+        }else{
+            db.collection("gamerooms").doc(roomID).update({
+                players:playerCount,
+            })
+        }
      })
 }
 
@@ -67,38 +79,67 @@ db.collection("gamerooms").doc(roomID).collection('player').get().then((snaps)=>
         var name = player.id.split("-");
         players.push(name[1])
         // Aufbau der Spieler-Eingabe:
-        playerform.innerHTML +=`
-            <button class="start-as-player" value="${player.id}">${player.id}</button>
+        existingPlayers.innerHTML +=`
+            <button class="start-as-player" value="${player.id}">${player.id.split('-')[1]}</button>
         `
     });
-    playerform.innerHTML += `
-        <input type="text" id="player_name" placeholder="Gib deinen Spielernamen ein">
-        <button>Neuen Spieler erstellen</button>
-    `
+    existingPlayersBtns = document.querySelectorAll('.start-as-player');
+    // Wenn ein bestehender Spieler gewählt wird:
+    existingPlayersBtns.forEach(player => {
+        player.addEventListener("click",function(e){
+            playerName = e.target.innerText;
+            document.getElementById('player_name').innerText = player
+            closeModal();
+        })
+    })
 })
 
 db.collection("gamerooms").doc(roomID)
     .onSnapshot((doc) => {
         console.log("Current data: ", doc.data());
 
+        turn = doc.data().turn;
+
+        gameStarted = doc.data().gameStarted;
+
         document.querySelector('.App').innerHTML = "";
 
         db.collection("gamerooms").doc(roomID).collection('player').get().then((snaps)=>{
             snaps.forEach(player => {
-                console.log(player.id)
                 createPlayerCard(player.id)
             });
         })
-    });
+});
 
-// Wenn ein neuer Spieler erstellt, oder ein bestehender gewählt wird:
+// Wenn ein neuer Spieler erstellt
 playerform.addEventListener("submit",function(e){
     e.preventDefault();
     const name = playerform['player_name'].value;
     players.push(name);
-    player = players[players.length-1];
-    document.getElementById('player_name').innerText = player
-    console.log(player);
     createNewPlayer(name);
+    console.log(players)
+    playerName = players[players.length-1];
+    document.getElementById('player_name').innerText = playerName
     closeModal();
+})
+
+rollBtn.addEventListener("click",function(e){
+    if(turn === playerName){
+        if(!gameStarted){
+            db.collection("gamerooms").doc(roomID).update({
+                gameStarted:true
+            })
+        }
+        let dice1 = (Math.floor(Math.random() * 6 + 1));
+        let dice2 = (Math.floor(Math.random() * 6 + 1));
+        let dice3 = (Math.floor(Math.random() * 6 + 1));
+        let dice4 = (Math.floor(Math.random() * 6 + 1));
+        let dice5 = (Math.floor(Math.random() * 6 + 1));
+
+        let dices = [dice1,dice2,dice3,dice4,dice5];
+        document.querySelector('.roll-counter').innerText = dices
+
+    }else{
+        alert(`Du bist nicht am Zug! Sondern ${turn}`)
+    }
 })
