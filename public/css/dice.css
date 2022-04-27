@@ -45,11 +45,19 @@
     padding: 1rem;
     margin: 1rem;
     border: solid 1px #221111;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    background-image: url("/assets/Kork_nahtlos_verschuss_oel.jpg");
+    box-shadow: 0 0 1rem #2e1d18;
+  }
+  .dice{
+    height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("/assets/Kork_nahtlos_verschuss_oel.jpg");
-    box-shadow: 0 0 1rem #2e1d18;
+    background-color: gray;
   }
   
   .dices-saved {

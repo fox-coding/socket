@@ -1,5 +1,6 @@
 const roomID = document.getElementById('game_room_id').textContent;
 const existingPlayers = document.querySelector('.existing-players');
+const docBody = document.querySelector('body');
 var existingPlayersBtns;
 const playerform = document.querySelector('.player-form');
 const playerModal = document.querySelector('.player-form-wrapper');
@@ -8,6 +9,7 @@ var turn;
 var gameStarted;
 var players = [];
 var playerName;
+var rollCount = 0;
 
 openModal(playerModal);
 
@@ -57,13 +59,13 @@ const createNewPlayer = function (name) {
         Kniffel_Count: null,
         Chance: null
      }).then(()=>{
-        //createPlayerCard(stringID)
-
         if(playerCount === 1){
             db.collection("gamerooms").doc(roomID).update({
                 players:playerCount,
                 turn:name,
-                gameStarted:false
+                gameStarted:false,
+                rolled:[],
+                savedDices:[]
             })
 
         }else{
@@ -88,7 +90,7 @@ db.collection("gamerooms").doc(roomID).collection('player').get().then((snaps)=>
     existingPlayersBtns.forEach(player => {
         player.addEventListener("click",function(e){
             playerName = e.target.innerText;
-            document.getElementById('player_name').innerText = player
+            document.getElementById('player_name').innerText = playerName
             closeModal();
         })
     })
@@ -99,6 +101,7 @@ db.collection("gamerooms").doc(roomID)
         console.log("Current data: ", doc.data());
 
         turn = doc.data().turn;
+        dices = doc.data().rolled;
 
         gameStarted = doc.data().gameStarted;
 
@@ -109,6 +112,15 @@ db.collection("gamerooms").doc(roomID)
                 createPlayerCard(player.id)
             });
         })
+
+
+        document.querySelector('.roll-counter').innerText = dices
+        if(gameStarted && gameStarted === true){
+            const rolledDicesHtml = dices.map(dice => {
+                return `<div class="dice ${dice}" data-value="${dice}">${dice}</div>`        
+            }).join("");
+            document.querySelector('.dices-rolled').innerHTML = rolledDicesHtml;
+        }
 });
 
 // Wenn ein neuer Spieler erstellt
@@ -127,19 +139,41 @@ rollBtn.addEventListener("click",function(e){
     if(turn === playerName){
         if(!gameStarted){
             db.collection("gamerooms").doc(roomID).update({
-                gameStarted:true
+                gameStarted:true,
             })
         }
-        let dice1 = (Math.floor(Math.random() * 6 + 1));
-        let dice2 = (Math.floor(Math.random() * 6 + 1));
-        let dice3 = (Math.floor(Math.random() * 6 + 1));
-        let dice4 = (Math.floor(Math.random() * 6 + 1));
-        let dice5 = (Math.floor(Math.random() * 6 + 1));
+        if(rollCount < 3){
+            rollCount++;
+            let dice1 = (Math.floor(Math.random() * 6 + 1));
+            let dice2 = (Math.floor(Math.random() * 6 + 1));
+            let dice3 = (Math.floor(Math.random() * 6 + 1));
+            let dice4 = (Math.floor(Math.random() * 6 + 1));
+            let dice5 = (Math.floor(Math.random() * 6 + 1));
+            let dices = [dice1,dice2,dice3,dice4,dice5];
 
-        let dices = [dice1,dice2,dice3,dice4,dice5];
-        document.querySelector('.roll-counter').innerText = dices
+            db.collection("gamerooms").doc(roomID).update({
+                rolled:dices
+            })
+
+        }
 
     }else{
         alert(`Du bist nicht am Zug! Sondern ${turn}`)
     }
 })
+
+docBody.addEventListener("click",function(e){
+    if(e.target.classList.contains('dice')){
+        db.collection("gamerooms").doc(roomID).get().then(doc=>{
+            let savedDices = doc.data().savedDices;
+
+            savedDices.push(e.target.dataset.value);
+
+            db.collection("gamerooms").doc(roomID).update({
+                savedDices:savedDices
+            })
+        })
+    }
+})
+
+
