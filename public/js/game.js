@@ -10,6 +10,7 @@ var gameStarted;
 var players = [];
 var playerName;
 var rollCount = 0;
+var dices = [];
 
 openModal(playerModal);
 
@@ -116,8 +117,8 @@ db.collection("gamerooms").doc(roomID)
 
         document.querySelector('.roll-counter').innerText = dices
         if(gameStarted && gameStarted === true){
-            const rolledDicesHtml = dices.map(dice => {
-                return `<div class="dice ${dice}" data-value="${dice}">${dice}</div>`        
+            const rolledDicesHtml = dices.map((dice, index) => {
+                return `<div class="dice ${dice}" data-index="${index}" data-value="${dice}">${dice}</div>`        
             }).join("");
             document.querySelector('.dices-rolled').innerHTML = rolledDicesHtml;
         }
@@ -149,12 +150,11 @@ rollBtn.addEventListener("click",function(e){
             let dice3 = (Math.floor(Math.random() * 6 + 1));
             let dice4 = (Math.floor(Math.random() * 6 + 1));
             let dice5 = (Math.floor(Math.random() * 6 + 1));
-            let dices = [dice1,dice2,dice3,dice4,dice5];
+            dices = [dice1,dice2,dice3,dice4,dice5];
 
             db.collection("gamerooms").doc(roomID).update({
                 rolled:dices
             })
-
         }
 
     }else{
@@ -163,13 +163,18 @@ rollBtn.addEventListener("click",function(e){
 })
 
 docBody.addEventListener("click",function(e){
-    if(e.target.classList.contains('dice')){
+    var me = e.target;
+    if(me.classList.contains('dice')){
+        let index = me.getAttribute('data-index');
         db.collection("gamerooms").doc(roomID).get().then(doc=>{
             let savedDices = doc.data().savedDices;
+
+            dices.splice(index, 1);
 
             savedDices.push(e.target.dataset.value);
 
             db.collection("gamerooms").doc(roomID).update({
+                rolled: dices,
                 savedDices:savedDices
             })
         })
