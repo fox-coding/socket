@@ -103,6 +103,7 @@ db.collection("gamerooms").doc(roomID)
 
         turn = doc.data().turn;
         dices = doc.data().rolled;
+        var saved = doc.data().savedDices;
 
         gameStarted = doc.data().gameStarted;
 
@@ -118,9 +119,15 @@ db.collection("gamerooms").doc(roomID)
         document.querySelector('.roll-counter').innerText = dices
         if(gameStarted && gameStarted === true){
             const rolledDicesHtml = dices.map((dice, index) => {
-                return `<div class="dice ${dice}" data-index="${index}" data-value="${dice}">${dice}</div>`        
+                return `<div class="dice rolled ${dice}" data-index="${index}" data-value="${dice}">${dice}</div>`        
             }).join("");
+            const savedDicesHtml = saved.map((dice, index) => {
+                return `<div class="dice saved ${dice}" data-index="${index}" data-value="${dice}">${dice}</div>`        
+            }).join("");
+
+
             document.querySelector('.dices-rolled').innerHTML = rolledDicesHtml;
+            document.querySelector('.dices-saved').innerHTML = savedDicesHtml;
         }
 });
 
@@ -165,13 +172,18 @@ rollBtn.addEventListener("click",function(e){
 docBody.addEventListener("click",function(e){
     var me = e.target;
     if(me.classList.contains('dice')){
-        let index = me.getAttribute('data-index');
+        let index = parseFloat(me.dataset.index);
+        let value = parseFloat(me.dataset.value);
         db.collection("gamerooms").doc(roomID).get().then(doc=>{
             let savedDices = doc.data().savedDices;
 
-            dices.splice(index, 1);
-
-            savedDices.push(e.target.dataset.value);
+            if(me.classList.contains('rolled')){
+                dices.splice(index, 1);
+                savedDices.push(value);
+            }else{
+                savedDices.splice(index, 1);
+                dices.push(value);
+            }
 
             db.collection("gamerooms").doc(roomID).update({
                 rolled: dices,
