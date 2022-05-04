@@ -11,6 +11,8 @@ var players = [];
 var playerName;
 var rollCount = 0;
 var dices = [];
+var saved = [];
+var rolledCount = 0;
 
 openModal(playerModal);
 
@@ -66,7 +68,8 @@ const createNewPlayer = function (name) {
                 turn:name,
                 gameStarted:false,
                 rolled:[],
-                savedDices:[]
+                savedDices:[],
+                rollCount: 0
             })
 
         }else{
@@ -103,7 +106,8 @@ db.collection("gamerooms").doc(roomID)
 
         turn = doc.data().turn;
         dices = doc.data().rolled;
-        var saved = doc.data().savedDices;
+        saved = doc.data().savedDices;
+        rolledCount = doc.data().rolledCount;
 
         gameStarted = doc.data().gameStarted;
 
@@ -150,18 +154,22 @@ rollBtn.addEventListener("click",function(e){
                 gameStarted:true,
             })
         }
-        if(rollCount < 3){
-            rollCount++;
-            let dice1 = (Math.floor(Math.random() * 6 + 1));
-            let dice2 = (Math.floor(Math.random() * 6 + 1));
-            let dice3 = (Math.floor(Math.random() * 6 + 1));
-            let dice4 = (Math.floor(Math.random() * 6 + 1));
-            let dice5 = (Math.floor(Math.random() * 6 + 1));
-            dices = [dice1,dice2,dice3,dice4,dice5];
+        if(rolledCount < 3){
+
+            var tmpDices = []
+
+            for (let i = 0; i < dices.length; i++) {
+                var value = (Math.floor(Math.random() * 6 + 1));
+                tmpDices.push(value)
+            }
+            dices = tmpDices;
 
             db.collection("gamerooms").doc(roomID).update({
-                rolled:dices
+                rolled:dices,
+                rollCount: rollCount
             })
+        }else{
+            alert('aufgebraucht!')
         }
 
     }else{
@@ -176,6 +184,11 @@ docBody.addEventListener("click",function(e){
         let value = parseFloat(me.dataset.value);
         db.collection("gamerooms").doc(roomID).get().then(doc=>{
             let savedDices = doc.data().savedDices;
+            let turn = doc.data().turn
+
+            if(turn !== playerName){
+                return;
+            }
 
             if(me.classList.contains('rolled')){
                 dices.splice(index, 1);

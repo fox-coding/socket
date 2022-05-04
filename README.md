@@ -1,5 +1,10 @@
 # socket
 
+# TODO:
+
+    - Rollen Btn stylen bei aufgebrauchten Würfen + Anzahl an Würfeln ausgeben
+    - rolledCount debuggen
+
 Firebase installieren:
 `npm install -g firebase-tools`
 
