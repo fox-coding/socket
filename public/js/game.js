@@ -9,7 +9,6 @@ var turn;
 var gameStarted;
 var players = [];
 var playerName;
-var rollCount = 0;
 var dices = [];
 var saved = [];
 var rolledCount = 0;
@@ -45,8 +44,7 @@ const createPlayerCard = function (id) {
 
 const createNewPlayer = function (name) {
     let playerCount = players.length;
-    let stringID = playerCount+"-"+name;
-    db.collection("gamerooms").doc(roomID).collection('player').doc(stringID).set({
+    db.collection("gamerooms").doc(roomID).collection('player').doc(name).set({
         Einser: null,
         Zweier: null,
         Dreier: null,
@@ -66,15 +64,17 @@ const createNewPlayer = function (name) {
             db.collection("gamerooms").doc(roomID).update({
                 players:playerCount,
                 turn:name,
+                playerOrder: players,
                 gameStarted:false,
                 rolled:[],
                 savedDices:[],
-                rollCount: 0
+                rolledCount: 0
             })
 
         }else{
             db.collection("gamerooms").doc(roomID).update({
                 players:playerCount,
+                playerOrder: players
             })
         }
      })
@@ -82,11 +82,11 @@ const createNewPlayer = function (name) {
 
 db.collection("gamerooms").doc(roomID).collection('player').get().then((snaps)=>{
     snaps.forEach(player => {
-        var name = player.id.split("-");
-        players.push(name[1])
+        var name = player.id;
+        players.push(name)
         // Aufbau der Spieler-Eingabe:
         existingPlayers.innerHTML +=`
-            <button class="start-as-player" value="${player.id}">${player.id.split('-')[1]}</button>
+            <button class="start-as-player" value="${player.id}">${player.id}</button>
         `
     });
     existingPlayersBtns = document.querySelectorAll('.start-as-player');
@@ -108,6 +108,8 @@ db.collection("gamerooms").doc(roomID)
         dices = doc.data().rolled;
         saved = doc.data().savedDices;
         rolledCount = doc.data().rolledCount;
+        players = doc.data().playerOrder;
+
 
         gameStarted = doc.data().gameStarted;
 
@@ -139,9 +141,10 @@ db.collection("gamerooms").doc(roomID)
 playerform.addEventListener("submit",function(e){
     e.preventDefault();
     const name = playerform['player_name'].value;
-    players.push(name);
-    createNewPlayer(name);
     console.log(players)
+    players.push(name);
+    console.log(players)
+    createNewPlayer(name);
     playerName = players[players.length-1];
     document.getElementById('player_name').innerText = playerName
     closeModal();
@@ -156,17 +159,25 @@ rollBtn.addEventListener("click",function(e){
         }
         if(rolledCount < 3){
 
+            rolledCount++;
+
             var tmpDices = []
 
-            for (let i = 0; i < dices.length; i++) {
+            let dicesCounter = dices.length;
+            if(dicesCounter === 0){
+                dicesCounter = 5;
+            }
+
+            for (let i = 0; i < dicesCounter; i++) {
                 var value = (Math.floor(Math.random() * 6 + 1));
                 tmpDices.push(value)
             }
             dices = tmpDices;
 
+            console.log(dices)
             db.collection("gamerooms").doc(roomID).update({
                 rolled:dices,
-                rollCount: rollCount
+                rolledCount: rolledCount
             })
         }else{
             alert('aufgebraucht!')
@@ -203,6 +214,44 @@ docBody.addEventListener("click",function(e){
                 savedDices:savedDices
             })
         })
+    }
+    if(me.classList.contains('list-btn')){
+        console.log(saved)
+        var neededValue = me.dataset.value;
+        var counter = 0;
+        var dbSlot = me.innerText.replace('ü','ue');
+        var currentValue = me.nextElementSibling.innerText;
+
+        for (let i = 0; i < saved.length; i++) {
+            const value = saved[i];
+
+            if(value == neededValue){
+                counter++;
+            }   
+        }
+
+        if(currentValue === ''){
+            db.collection("gamerooms").doc(roomID).collection('player').doc(playerName).update({
+                [dbSlot]:counter*neededValue
+            })
+
+            let playerTurnIndex = players.indexOf(playerName)+1;
+            if(playerTurnIndex > players.length){
+                playerTurnIndex = 0
+            }
+
+            db.collection("gamerooms").doc(roomID).update({
+                turn: players[playerTurnIndex],
+                rolledCount: 0,
+                rolled: [],
+                savedDices: []
+
+            })
+
+        }else{
+            alert('Feld bereits befüllt!')
+        }
+
     }
 })
 
