@@ -229,23 +229,27 @@ docBody.addEventListener("click",function(e){
                 counter++;
             }   
         }
-
         if(currentValue === ''){
+            let playerOfClickedCard = me.parentElement.parentElement.parentElement.querySelector('.name-of-player').innerText
+            if(playerName !== playerOfClickedCard){
+                alert('Ups! Falsche Karte');
+                return;
+            }
             db.collection("gamerooms").doc(roomID).collection('player').doc(playerName).update({
                 [dbSlot]:counter*neededValue
-            })
-
-            let playerTurnIndex = players.indexOf(playerName)+1;
-            if(playerTurnIndex > players.length){
-                playerTurnIndex = 0
-            }
-
-            db.collection("gamerooms").doc(roomID).update({
-                turn: players[playerTurnIndex],
-                rolledCount: 0,
-                rolled: [],
-                savedDices: []
-
+            }).then(()=>{
+                let playerTurnIndex = players.indexOf(playerName)+1;
+                if(playerTurnIndex > players.length-1){
+                    playerTurnIndex = 0
+                }
+    
+                db.collection("gamerooms").doc(roomID).update({
+                    turn: players[playerTurnIndex],
+                    rolledCount: 0,
+                    rolled: [],
+                    savedDices: []
+    
+                })
             })
 
         }else{

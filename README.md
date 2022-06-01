@@ -2,7 +2,6 @@
 
 # TODO:
 
-    - Spieler darf nur in seiner Karte Werte speichern
     - Rollen Btn stylen bei aufgebrauchten Würfen + Anzahl an Würfeln ausgeben
 
 Firebase installieren:
