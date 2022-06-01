@@ -2,7 +2,7 @@
 
 # TODO:
 
-    - Rollen Btn stylen bei aufgebrauchten Würfen + Anzahl an Würfeln ausgeben
+    - Funktion für die Figuren, kleine Straße, Kniffel etc. 
 
 Firebase installieren:
 `npm install -g firebase-tools`
