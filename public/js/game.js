@@ -15,6 +15,19 @@ var rolledCount = 0;
 
 openModal(playerModal);
 
+const findDuplicates = (arr) => {
+    let sorted_arr = arr.slice().sort();
+    let results = [];
+    for (let i = 0; i < sorted_arr.length - 1; i++) {
+      if (sorted_arr[i + 1] == sorted_arr[i]) {
+        results.push(sorted_arr[i]);
+      }
+    }
+    return results;
+  }
+  
+  let duplicatedArray = [9, 9, 111, 2, 3, 4, 4, 5, 7];
+
 const createPlayerCard = function (id) {
 
     var amountPlayerCards = document.querySelectorAll('.App .ListComponent');
@@ -140,8 +153,17 @@ db.collection("gamerooms").doc(roomID)
 // Wenn ein neuer Spieler erstellt
 playerform.addEventListener("submit",function(e){
     e.preventDefault();
+
+    if(gameStarted){
+        alert('Spiel wurde bereits gestartet!')
+        return
+    }
+
     const name = playerform['player_name'].value;
     console.log(players)
+    if(!players){
+        players = []
+    }
     players.push(name);
     console.log(players)
     createNewPlayer(name);
@@ -256,6 +278,69 @@ docBody.addEventListener("click",function(e){
             alert('Feld bereits befüllt!')
         }
 
+    }
+    // PRÜFEN DER WÜRFEL BEI FUNKTIONALEN EINTRÄGEN:
+    if(me.classList.contains('function-btn')){
+
+        var currentValue = me.nextElementSibling.innerText;
+
+        // Dreierpasch Funktion:
+        if(me.classList.contains('dreierpasch') || me.classList.contains('viererpasch') || me.classList.contains('kniffel')){
+            var dreierpasch = false
+            var viererpasch = false
+            var kniffel = false
+            var sum = 0
+            var dbSlot = me.innerText.replace('ü','ue');
+
+            saved.forEach(value => {
+                var count = 0
+                sum = sum + value
+                saved.forEach(element => {
+                    if (element === value) {
+                      count += 1;
+                    }
+                  });
+                if(count >= 3){
+                    dreierpasch = true
+                }
+                if(count >= 4){
+                    viererpasch = true
+                }
+                if(count >= 5){
+                    kniffel = true 
+                }
+            })
+            if(kniffel && me.classList.contains('kniffel')){
+                sum = 50
+            }
+            if(me.classList.contains('dreierpasch') && !dreierpasch){
+                sum = 0
+            }
+            if(me.classList.contains('viererpasch') && !viererpasch){
+                sum = 0
+            }
+            if(me.classList.contains('kniffel') && !kniffel){
+                sum = 0
+            }
+            // In DB speichern:
+
+            if(currentValue === ""){
+                db.collection("gamerooms").doc(roomID).collection('player').doc(playerName).update({
+                    [dbSlot]:sum
+                }).then(()=>{
+                    let playerTurnIndex = players.indexOf(playerName)+1;
+                    if(playerTurnIndex > players.length-1){
+                        playerTurnIndex = 0
+                    }
+                    db.collection("gamerooms").doc(roomID).update({
+                        turn: players[playerTurnIndex],
+                        rolledCount: 0,
+                        rolled: [],
+                        savedDices: []
+                    })
+                }) 
+            }
+        }
     }
 })
 
