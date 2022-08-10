@@ -45,6 +45,30 @@ const createPlayerCard = function (id) {
 
         cpy.classList.remove('dummy-element-player-card');
 
+        var addends = cpy.querySelectorAll('.upper .addend')
+        var sum = 0
+        var bonus = 0
+
+        addends.forEach(entry => {
+            if(entry.innerText !== ""){
+                sum = sum + parseFloat(entry.innerText)
+            }
+        })
+
+        if(sum >= 63){
+            bonus = 35
+        }
+
+        var resultAll = sum + bonus
+
+        cpy.querySelector('.upper-result-component-container .all').innerHTML = resultAll
+
+        cpy.querySelector('.upper-result-component-container .sum').innerHTML = sum
+
+        if(bonus > 0){
+            cpy.querySelector('.upper-result-component-container .bonus').innerHTML = bonus
+        }
+
         if(amountPlayerCards.lenght === 0){
             //insertBefore(cpy, document.querySelector('.dice-roller-container'));
             document.querySelector('.App').prepend(cpy)
@@ -237,8 +261,8 @@ docBody.addEventListener("click",function(e){
             })
         })
     }
-    if(me.classList.contains('list-btn')){
-        console.log(saved)
+    if(me.classList.contains('list-btn') && !me.classList.contains('function-btn')){
+
         var neededValue = me.dataset.value;
         var counter = 0;
         var dbSlot = me.innerText.replace('ü','ue');
