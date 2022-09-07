@@ -265,7 +265,7 @@ docBody.addEventListener("click",function(e){
 
         var neededValue = me.dataset.value;
         var counter = 0;
-        var dbSlot = me.innerText.replace('ü','ue');
+        var dbSlot = me.innerText.replace('ü','ue').replace(" ", "_");
         var currentValue = me.nextElementSibling.innerText;
 
         for (let i = 0; i < saved.length; i++) {
@@ -309,12 +309,15 @@ docBody.addEventListener("click",function(e){
         var currentValue = me.nextElementSibling.innerText;
 
         // Dreierpasch Funktion:
-        if(me.classList.contains('dreierpasch') || me.classList.contains('viererpasch') || me.classList.contains('kniffel')){
+        if(me.classList.contains('dreierpasch') || me.classList.contains('viererpasch') || me.classList.contains('kniffel') || me.classList.contains('full-house')){
             var dreierpasch = false
             var viererpasch = false
             var kniffel = false
+            var fullhouse = false
             var sum = 0
-            var dbSlot = me.innerText.replace('ü','ue');
+            var dbSlot = me.innerText.replace('ü','ue').replace(" ", "_");
+
+            var foundMultiple = 0
 
             saved.forEach(value => {
                 var count = 0
@@ -326,6 +329,7 @@ docBody.addEventListener("click",function(e){
                   });
                 if(count >= 3){
                     dreierpasch = true
+                    foundMultiple = value
                 }
                 if(count >= 4){
                     viererpasch = true
@@ -334,8 +338,29 @@ docBody.addEventListener("click",function(e){
                     kniffel = true 
                 }
             })
+
+
+            if(dreierpasch){
+                saved.forEach(value => {
+                    var count = 0
+                    if(value !== foundMultiple){
+                        saved.forEach(element => {
+                            if (element === value) {
+                              count += 1;
+                            }
+                        });
+                    }
+                    if(count === 2){
+                        fullhouse = true
+                    }
+                })
+            }
+
             if(kniffel && me.classList.contains('kniffel')){
                 sum = 50
+            }
+            if(fullhouse && me.classList.contains('full-house')){
+                sum = 25
             }
             if(me.classList.contains('dreierpasch') && !dreierpasch){
                 sum = 0
@@ -349,6 +374,7 @@ docBody.addEventListener("click",function(e){
             // In DB speichern:
 
             if(currentValue === ""){
+                
                 db.collection("gamerooms").doc(roomID).collection('player').doc(playerName).update({
                     [dbSlot]:sum
                 }).then(()=>{
