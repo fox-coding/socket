@@ -19,4 +19,6 @@ In Firebase einlogen:
 `firebase login`
 
 Entwicklungserver starten:
+`cd socket/functions`
+`npm install`
 `firebase serve`
