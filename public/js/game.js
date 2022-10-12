@@ -26,8 +26,6 @@ const findDuplicates = (arr) => {
     return results;
   }
   
-  let duplicatedArray = [9, 9, 111, 2, 3, 4, 4, 5, 7];
-
 const createPlayerCard = function (id) {
 
     var amountPlayerCards = document.querySelectorAll('.App .ListComponent');
@@ -306,16 +304,22 @@ docBody.addEventListener("click",function(e){
     // PRÜFEN DER WÜRFEL BEI FUNKTIONALEN EINTRÄGEN:
     if(me.classList.contains('function-btn')){
 
+        let playerOfClickedCard = me.parentElement.parentElement.parentElement.querySelector('.name-of-player').innerText
+        if(playerName !== playerOfClickedCard){
+            alert('Ups! Falsche Karte');
+            return;
+        }
+
         var currentValue = me.nextElementSibling.innerText;
 
-        // Dreierpasch Funktion:
-        if(me.classList.contains('dreierpasch') || me.classList.contains('viererpasch') || me.classList.contains('kniffel') || me.classList.contains('full-house')){
+        // Berechnungs-Einträge:
+        if(me.classList.contains('dreierpasch') || me.classList.contains('viererpasch') || me.classList.contains('kniffel') || me.classList.contains('full-house') || me.classList.contains('chance') || me.classList.contains('kleine-strasse') || me.classList.contains('grosse-strasse')){
             var dreierpasch = false
             var viererpasch = false
             var kniffel = false
             var fullhouse = false
             var sum = 0
-            var dbSlot = me.innerText.replace('ü','ue').replace(" ", "_");
+            var dbSlot = me.innerText.replace('ü','ue').replace(" ", "_").replace("ß","zz").replace("ß","zz");
 
             var foundMultiple = 0
 
@@ -370,6 +374,33 @@ docBody.addEventListener("click",function(e){
             }
             if(me.classList.contains('kniffel') && !kniffel){
                 sum = 0
+            }
+            if(me.classList.contains('chance')){
+                sum = 0;
+                saved.forEach(value => {
+                    sum = sum + value
+                })
+            }
+            if(me.classList.contains('kleine-strasse')){
+                sum = 0
+                if(saved.includes(1) && saved.includes(2) && saved.includes(3) && saved.includes(4)){
+                    sum = 30
+                }
+                if(saved.includes(2) && saved.includes(3) && saved.includes(4) && saved.includes(5)){
+                    sum = 30
+                }
+                if(saved.includes(3) && saved.includes(4) && saved.includes(5) && saved.includes(6)){
+                    sum = 30
+                }
+            }
+            if(me.classList.contains('grosse-strasse')){
+                sum = 0
+                if(saved.includes(1) && saved.includes(2) && saved.includes(3) && saved.includes(4) && saved.includes(5)){
+                    sum = 40
+                }
+                if(saved.includes(2) && saved.includes(3) && saved.includes(4) && saved.includes(5) && saved.includes(6)){
+                    sum = 40
+                }
             }
             // In DB speichern:
 
